@@ -5,7 +5,7 @@ import os
 import numpy as np
 from sklearn.decomposition import PCA
 
-filepath = '/home/xu/Projects/pattern_recognition/data'
+filepath = '/home/xu/Projects/pattern_recognition/data/cifar-10-batches-py'
 
 
 def prepare_data(path):
@@ -17,7 +17,7 @@ def prepare_data(path):
     train_image = []
     train_label = []
     for i in range(1, 6):
-        file_path = os.path.join(path, 'cifar-10-batches-py/data_batch_%d' % i)
+        file_path = os.path.join(path, 'data_batch_%d' % i)
         with open(file_path, 'rb') as f:
             data = pickle.load(f, encoding='latin1')
             train_image.append(data['data'])
@@ -31,7 +31,7 @@ def prepare_data(path):
         pickle.dump(train_label, label_train)
     # ss = pickle.load(open(os.path.join(path, 'train_images.pkl'), 'rb'))
     # print(ss.shape)
-    file_path = os.path.join(path, 'cifar-10-batches-py/test_batch')
+    file_path = os.path.join(path, 'test_batch')
     with open(file_path, 'rb') as f:
         data = pickle.load(f, encoding='latin1')
     test_image = np.array(data['data'])
